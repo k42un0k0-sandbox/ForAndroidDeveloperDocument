@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -29,11 +32,15 @@ class HomeFragment : Fragment() {
             textView.text = it
         })
         val button = root.findViewById<Button>(R.id.home_button)
+        val image: ImageView = root.findViewById(R.id.home_image)
+
         button.setOnClickListener {
             AnimatorInflater.loadAnimator(context, R.animator.property_animator).apply {
                 setTarget(button)
                 start()
             }
+            val hyperspaceJump: Animation = AnimationUtils.loadAnimation(context, R.anim.hyperspace_jump)
+            image.startAnimation(hyperspaceJump)
         }
         return root
     }
