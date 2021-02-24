@@ -1,9 +1,11 @@
 package com.example.forandroiddeveloperdocument.ui.home
 
+import android.animation.AnimatorInflater
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -26,6 +28,13 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        val button = root.findViewById<Button>(R.id.home_button)
+        button.setOnClickListener {
+            AnimatorInflater.loadAnimator(context, R.animator.property_animator).apply {
+                setTarget(button)
+                start()
+            }
+        }
         return root
     }
 }
