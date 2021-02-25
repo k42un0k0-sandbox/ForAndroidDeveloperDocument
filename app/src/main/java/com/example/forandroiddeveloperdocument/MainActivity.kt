@@ -1,18 +1,25 @@
 package com.example.forandroiddeveloperdocument
 
+
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.ShareActionProvider
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.MenuItemCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,7 +50,22 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
+        val shareItem: MenuItem = menu.findItem(R.id.action_share)
+        val myShareActionProvider: ShareActionProvider = MenuItemCompat.getActionProvider(shareItem) as ShareActionProvider
+        val myShareIntent = Intent(Intent.ACTION_SEND)
+        myShareIntent.type = "image/*"
+        myShareIntent.putExtra(Intent.EXTRA_STREAM, "myImageUri")
+        myShareActionProvider.setShareIntent(myShareIntent)
         return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        Log.d("option item clicked", item.title.toString() + " group id: " + item.groupId)
+        return true
+    }
+
+    fun onGroupItemClick(item: MenuItem) {
+        Log.d("group item clicked", item.title.toString() + " group id: " + item.groupId)
     }
 
     override fun onSupportNavigateUp(): Boolean {
