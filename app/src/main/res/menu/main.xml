@@ -2,8 +2,39 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/action_favorite"
+        android:icon="@drawable/ic_menu_send"
+        android:title="お気に入り"
+        android:checkable="true"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never" />
+    <item
+        android:title="hello"
+        app:actionViewClass="android.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+    <item
+        android:id="@+id/action_share"
+        android:title="Share"
+        app:actionProviderClass="androidx.appcompat.widget.ShareActionProvider"
+        app:showAsAction="ifRoom" />
+    <group android:id="@+id/group">
+        <item android:id="@+id/group_item1"
+            android:onClick="onGroupItemClick"
+            android:title="aaaa" />
+        <item android:id="@+id/group_item2"
+            android:onClick="onGroupItemClick"
+            android:title="bbbb" />
+    </group>
+    <group android:id="@+id/group2">
+        <item android:id="@+id/group_item3"
+            android:onClick="onGroupItemClick"
+            android:title="aaaa" />
+        <item android:id="@+id/group_item4"
+            android:onClick="onGroupItemClick"
+            android:title="bbbb" />
+    </group>
 </menu>
