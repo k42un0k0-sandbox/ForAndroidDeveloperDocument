@@ -60,12 +60,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        Log.d("option item clicked", item.title.toString() + " group id: " + item.groupId)
-        return true
+        Log.d("option item clicked", item.title?.toString() + " group id: " + item.groupId)
+        return super.onOptionsItemSelected(item)
     }
 
     fun onGroupItemClick(item: MenuItem) {
-        Log.d("group item clicked", item.title.toString() + " group id: " + item.groupId)
+        Log.d("group item clicked", item.title?.toString() + " group id: " + item.groupId)
     }
 
     override fun onSupportNavigateUp(): Boolean {
