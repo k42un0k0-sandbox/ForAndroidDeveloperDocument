@@ -1,6 +1,9 @@
 package com.example.forandroiddeveloperdocument.ui.home
 
 import android.animation.AnimatorInflater
+import android.annotation.SuppressLint
+import android.content.res.TypedArray
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -43,5 +46,15 @@ class HomeFragment : Fragment() {
             image.startAnimation(hyperspaceJump)
         }
         return root
+    }
+
+    fun noop(){
+        val icons: TypedArray = resources.obtainTypedArray(R.array.icons)
+        val drawable: Drawable? = icons.getDrawable(0)
+
+        icons.recycle()
+        val colors: TypedArray = resources.obtainTypedArray(R.array.colors)
+        val color: Int = colors.getColor(0,0)
+        colors.recycle()
     }
 }
